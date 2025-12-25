@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -22,7 +21,6 @@
             color: #1e293b;
             scroll-behavior: smooth;
         }
-        /* Ensure serif font overrides all standard utility classes */
         .font-sans, .font-serif {
             font-family: 'Noto Serif JP', serif !important;
         }
@@ -35,7 +33,6 @@
         .bg-brand-blue { background-color: var(--brand-blue); }
         .text-brand-blue { color: var(--brand-blue); }
         
-        /* High-end entrance animations */
         .reveal-up {
             animation: revealUp 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
         }
@@ -44,26 +41,25 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Subtle transition for interactive elements */
         a, button { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
     </style>
 <script type="importmap">
 {
   "imports": {
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "vite": "https://esm.sh/vite@^7.3.0"
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
 <body class="selection:bg-blue-100 selection:text-blue-900">
     <div id="root"></div>
-    <!-- アプリケーションのエントリーポイントを読み込む -->
+    <!-- /index.tsx はビルド時に自動的に適切なJavaScriptファイルに置き換えられます -->
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>
