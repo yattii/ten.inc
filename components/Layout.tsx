@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, MapPin, ChevronRight, ExternalLink, ArrowUpRight } from 'lucide-react';
@@ -21,20 +20,22 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const navItems = [
     { name: 'ホーム', path: '/' },
-    { name: '催事営業', path: '/services/event' },
-    { name: '実績・事例', path: '/works' },
+    { name: 'サービス', path: '/services' },
     { name: '会社情報', path: '/company' },
     { name: '採用情報', path: '/recruitment' },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname.startsWith(path);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Upper Top Bar */}
       <div className="hidden lg:block bg-[#002244] py-2 text-white text-[10px] tracking-widest uppercase font-bold px-8">
         <div className="container mx-auto flex justify-between items-center">
-          <span>Kyoto Professional Sales Promotion & Food Service Group</span>
+          <span>Kansai Area Professional Sales Promotion & Food Service Group</span>
           <div className="flex space-x-6">
             <Link to="/company" className="hover:text-blue-300 transition-colors">Corporate profile</Link>
             <Link to="/recruitment" className="hover:text-blue-300 transition-colors">Recruit</Link>
@@ -70,15 +71,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 )}
               </Link>
             ))}
-            <a
-              href="https://mizutaki-ten.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2 text-sm font-bold tracking-wider text-slate-500 flex items-center hover:text-[#004098] group"
-            >
-              飲食事業
-              <ExternalLink className="ml-1 w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
           </nav>
 
           {/* CTA Group */}
@@ -113,14 +105,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   {item.name} <ChevronRight className="text-slate-300" />
                 </Link>
               ))}
-              <a
-                href="https://mizutaki-ten.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-2xl font-bold text-slate-400 border-b border-slate-100 pb-4 flex justify-between items-center"
-              >
-                飲食事業 <ExternalLink className="w-5 h-5" />
-              </a>
             </nav>
             <div className="mt-auto pt-12 space-y-4">
               <Link to="/contact" className="w-full py-5 bg-[#004098] text-white font-black text-center block tracking-[0.2em]">
@@ -149,7 +133,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <div className="mb-10">
                 <span className="text-4xl font-black tracking-tighter">TEN <span className="text-blue-500 font-light">INC.</span></span>
                 <p className="text-slate-400 mt-6 text-lg leading-relaxed font-medium">
-                  京都を拠点に、催事営業・セールスプロモーションのプロ集団として、クライアント様の期待を超える成果を創出し続けます。
+                  関西一円を拠点に、催事営業・セールスプロモーションと飲食事業を展開するプロ集団。クライアント様の期待を超える成果を創出し続けます。
                 </p>
               </div>
               <div className="space-y-4">
@@ -167,16 +151,16 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <div className="lg:col-span-3">
               <h3 className="text-xs font-black tracking-[0.3em] uppercase text-blue-500 mb-10 border-l-2 border-blue-500 pl-4">Service</h3>
               <ul className="space-y-4">
+                <li><Link to="/services" className="text-slate-300 hover:text-white transition-colors flex items-center group">サービス一覧 <ChevronRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" /></Link></li>
                 <li><Link to="/services/event" className="text-slate-300 hover:text-white transition-colors flex items-center group">催事営業・販促支援 <ChevronRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" /></Link></li>
-                <li><a href="https://mizutaki-ten.vercel.app/" target="_blank" className="text-slate-300 hover:text-white transition-colors flex items-center group">飲食事業（水炊き 天） <ExternalLink className="w-4 h-4 ml-2" /></a></li>
-                <li><Link to="/works" className="text-slate-300 hover:text-white transition-colors flex items-center group">実績・事例紹介 <ChevronRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" /></Link></li>
+                <li><Link to="/services/restaurant" className="text-slate-300 hover:text-white transition-colors flex items-center group">飲食事業（水炊き 天） <ChevronRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" /></Link></li>
               </ul>
             </div>
 
             <div className="lg:col-span-4">
               <h3 className="text-xs font-black tracking-[0.3em] uppercase text-blue-500 mb-10 border-l-2 border-blue-500 pl-4">Contact</h3>
               <p className="text-slate-400 mb-8 text-sm font-medium leading-relaxed">
-                催事のご相談、お見積り依頼など、お気軽にお問い合わせください。<br />担当者が迅速に対応させていただきます。
+                関西各地での催事・飲食に関するご相談など、お気軽にお問い合わせください。
               </p>
               <Link to="/contact" className="w-full py-5 bg-white/5 border border-white/10 text-white font-black text-xs tracking-[0.2em] flex items-center justify-center hover:bg-white/10 transition-all uppercase">
                 Contact Form <Mail className="ml-3 w-5 h-5 text-blue-500" />
@@ -185,7 +169,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           </div>
 
           <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <p className="text-slate-500 text-[10px] font-black tracking-[0.2em] uppercase">&copy; {new Date().getFullYear()} TEN INC. KYOTO JAPAN.</p>
+            <p className="text-slate-500 text-[10px] font-black tracking-[0.2em] uppercase">&copy; {new Date().getFullYear()} TEN INC. KANSAI JAPAN.</p>
             <div className="flex space-x-10">
               <Link to="/contact" className="text-slate-500 hover:text-white text-[10px] font-black tracking-[0.2em]">PRIVACY POLICY</Link>
               <Link to="/company" className="text-slate-500 hover:text-white text-[10px] font-black tracking-[0.2em]">CORPORATE SITE</Link>

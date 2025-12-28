@@ -1,9 +1,15 @@
 import React from 'react';
 import { ExternalLink, Utensils, Heart, Award, ArrowRight } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const RestaurantService: React.FC = () => {
   return (
     <div className="bg-white">
+      <SEO 
+        title="飲食事業（水炊き 天） | 株式会社TEN" 
+        description="京都の伝統と至福のおもてなしを提供する「水炊き 天」。厳選された地鶏と秘伝のスープで, 心に残る食体験をお届けします。"
+      />
+
       {/* Sub Hero */}
       <section className="pt-48 pb-32 bg-[#001122] text-white overflow-hidden relative text-center">
         <div className="container mx-auto px-6 relative z-10">
@@ -13,10 +19,10 @@ const RestaurantService: React.FC = () => {
             株式会社TENがプロデュースする飲食事業。<br />妥協なき素材選びと、至福のおもてなし。
           </p>
         </div>
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="absolute inset-0 opacity-20 pointer-events-none">
           <img 
-            src="https://images.unsplash.com/photo-1547585446-bc5669741f28?auto=format&fit=crop&q=80&w=1600" 
-            alt="Mizutaki Hero" 
+            src="/restaurant-exterior.jpg" 
+            alt="水炊き 天 店舗外観" 
             className="w-full h-full object-cover grayscale"
           />
         </div>

@@ -7,34 +7,34 @@ const Works: React.FC = () => {
   const cases = [
     {
       type: "携帯イベント",
-      title: "ソフトバンク様 商業施設獲得プロモーション",
-      location: "京都府京都市・八幡市",
-      description: "京都府内のショッピングモールにて、ソフトバンク様の携帯イベントを運営。独自の動線設計により、前月比150%の新規MNP獲得を達成。京都の催事会社としての強みを活かした地元密着型の運営。",
-      tags: ["ソフトバンク", "携帯イベント", "京都催事会社"],
+      title: "ソフトバンク様 大阪主要駅ビル獲得プロモーション",
+      location: "大阪府大阪市（梅田・難波エリア）",
+      description: "大阪市内の大型商業施設・駅ビルにて、ソフトバンク様の携帯イベントを運営。圧倒的なトラフィックを活かした独自の動線設計により、前月比180%の新規MNP獲得を達成。関西の催事会社としての真価を発揮。",
+      tags: ["ソフトバンク", "携帯イベント", "関西催事会社"],
       img: "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=80&w=800"
     },
     {
       type: "携帯イベント",
-      title: "キャリア公式ショップ 週末イベント運営代行",
-      location: "滋賀・奈良エリア",
-      description: "週末の店舗集客を目的とした携帯イベントの企画・運営。ソフトバンク様等の各種プラン提案をスムーズに行うためのスタッフ教育から現場管理までを一貫して担当。",
-      tags: ["携帯販売", "販促支援", "催事運営"],
+      title: "兵庫エリア ロードサイド店舗イベント運営代行",
+      location: "兵庫県神戸市・西宮市",
+      description: "ソフトバンク様等の各種販売促進イベントの企画・運営。神戸エリア特有の顧客属性に合わせたアプローチにより、成約率の大幅向上に寄与。関西一円の現場を統括する弊社ディレクターが担当。",
+      tags: ["ソフトバンク販促", "兵庫催事", "獲得支援"],
       img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
     },
     {
       type: "Food Promotion",
-      title: "水炊き 天：京都ブランド認知拡大キャンペーン",
-      location: "京都府八幡市（自社店舗）",
-      description: "催事営業のノウハウを活かした飲食部門のプロモーション。実店舗への送客だけでなく、地域の「京都・八幡」というキーワードを活かしたWeb・SNS販促を実施。",
-      tags: ["水炊き 天", "京都グルメ", "飲食事業"],
+      title: "水炊き 天：ブランド認知拡大プロモーション",
+      location: "京都・大阪エリア",
+      description: "催事営業のノウハウを活かした飲食部門のプロモーション。実店舗への送客に加え、関西全域でのブランド強化を図るセールスプロモーションを実施。",
+      tags: ["水炊き 天", "関西グルメ", "飲食事業"],
       img: "https://images.unsplash.com/photo-1547585446-bc5669741f28?auto=format&fit=crop&q=80&w=800"
     },
     {
-      type: "催事運営",
-      title: "新生活応援 携帯販売・光回線セット催事",
-      location: "京都府内 家電量販店",
-      description: "春の商戦期に合わせた携帯イベント。ソフトバンク様等の最新端末と固定回線のセット獲得に注力。京都の催事会社TENのディレクターが現場のKPIを緻密に管理。",
-      tags: ["京都", "携帯イベント", "ソフトバンク"],
+      type: "携帯イベント",
+      title: "滋賀・奈良エリア 新生活応援キャンペーン",
+      location: "近畿圏内 ショッピングセンター",
+      description: "新生活商戦期に合わせた携帯イベントの広域運営。ソフトバンク様等の最新端末と光回線のセット販売において高いKPIを達成。関西の催事会社TENによる教育スタッフの派遣事例。",
+      tags: ["近畿", "携帯イベント", "ソフトバンク"],
       img: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800"
     }
   ];
@@ -42,17 +42,17 @@ const Works: React.FC = () => {
   return (
     <div className="bg-white">
       <SEO 
-        title="携帯イベント実績・ソフトバンク販促事例 | 京都の催事会社TEN" 
-        description="京都を拠点にソフトバンク等の携帯イベントを運営する株式会社TENの実績紹介。京都府内を中心とした豊富な催事運営実績を掲載しています。"
+        title="携帯イベント実績・ソフトバンク販促事例 | 関西の催事会社TEN" 
+        description="大阪・兵庫・京都を中心に、関西全域でソフトバンク等の携帯イベント運営をリードする株式会社TENの実績紹介。広域プロモーション事例を掲載しています。"
       />
 
       {/* Header */}
       <section className="pt-48 pb-24 bg-slate-50 relative overflow-hidden">
         <div className="container mx-auto px-8 relative z-10">
-          <span className="text-blue-600 font-black text-[11px] tracking-[0.5em] uppercase mb-8 block">Case Studies in Kyoto</span>
+          <span className="text-blue-600 font-black text-[11px] tracking-[0.5em] uppercase mb-8 block">Kansai Project Cases</span>
           <h1 className="text-5xl lg:text-7xl font-serif-jp font-black text-[#002244] mb-8 tracking-tighter">実績・事例</h1>
           <div className="w-20 h-2 bg-blue-600 mb-6"></div>
-          <p className="text-slate-500 font-bold">京都の催事会社としての豊富な携帯イベント実績</p>
+          <p className="text-slate-500 font-bold">関西の催事会社としての広域な携帯イベント実績</p>
         </div>
       </section>
 
@@ -65,7 +65,7 @@ const Works: React.FC = () => {
                 <div className="aspect-video relative overflow-hidden bg-slate-200">
                   <img
                     src={item.img}
-                    alt={`${item.title} | 京都の催事会社TENの実績`}
+                    alt={`${item.title} | 関西の催事会社TENの実績`}
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale group-hover:grayscale-0"
                   />
                   <div className="absolute top-0 left-0 bg-[#004098] text-white px-6 py-3 text-[9px] font-black tracking-[0.4em] uppercase">
@@ -102,12 +102,12 @@ const Works: React.FC = () => {
       {/* Bottom CTA */}
       <section className="py-32 bg-[#001122] text-white">
         <div className="container mx-auto px-8 text-center max-w-4xl">
-          <h2 className="text-3xl lg:text-5xl font-serif-jp font-black mb-10">京都での携帯イベント・ソフトバンク販促の<br />ご相談をお待ちしております。</h2>
+          <h2 className="text-3xl lg:text-5xl font-serif-jp font-black mb-10">関西での携帯イベント・ソフトバンク販促の<br />ご相談をお待ちしております。</h2>
           <p className="text-slate-400 text-lg mb-16 font-medium">
-            株式会社TENは、結果を出すための「京都の催事会社」です。<br />具体的な提案書やお見積りをご希望の方はお気軽にご連絡ください。
+            株式会社TENは、関西全域で結果を出すための「催事会社」です。<br />広域展開のご提案やお見積りをご希望の方はお気軽にご連絡ください。
           </p>
           <Link to="/contact" className="px-16 py-8 bg-[#004098] text-white font-black text-xs tracking-[0.4em] uppercase hover:bg-white hover:text-[#004098] transition-all flex items-center justify-center inline-flex">
-            お問い合わせはこちら <ArrowUpRight className="ml-3 w-5 h-5" />
+            お問い合わせ・無料相談 <ArrowUpRight className="ml-3 w-5 h-5" />
           </Link>
         </div>
       </section>

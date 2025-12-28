@@ -1,211 +1,318 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ChevronRight, BarChart3, Users, Award, ShieldCheck, Zap, ExternalLink, ArrowUpRight } from 'lucide-react';
+import { 
+  ArrowUpRight, 
+  ChevronRight, 
+  Instagram, 
+  Mail, 
+  Phone,
+  Target,
+  Award,
+  ArrowRight,
+  Clock
+} from 'lucide-react';
 import SEO from '../components/SEO';
 
+// TikTok用のカスタムアイコンコンポーネント
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.17-2.86-.6-4.12-1.31a6.417 6.417 0 01-1.87-1.56v7.37c-.03 2.44-.83 4.93-2.63 6.59-1.81 1.67-4.4 2.36-6.75 1.84-2.35-.52-4.4-2.13-5.38-4.31C.64 16.32.61 13.63 1.58 11.41c1.05-2.41 3.38-4.19 6-4.6v4.02c-1.31.2-2.58.91-3.38 1.99-.8 1.08-1.07 2.49-.73 3.8.34 1.31 1.25 2.44 2.45 3.03 1.2.59 2.66.62 3.88.08 1.22-.54 2.06-1.74 2.22-3.07.03-.25.03-.51.03-.76V.02z" />
+  </svg>
+);
+
 const Home: React.FC = () => {
+  useEffect(() => {
+    const tiktokScript = document.createElement('script');
+    tiktokScript.src = "https://www.tiktok.com/embed.js";
+    tiktokScript.async = true;
+    document.body.appendChild(tiktokScript);
+
+    const instagramScript = document.createElement('script');
+    instagramScript.src = "//www.instagram.com/embed.js";
+    instagramScript.async = true;
+    document.body.appendChild(instagramScript);
+
+    const timer = setTimeout(() => {
+      if ((window as any).instgrm) {
+        (window as any).instgrm.Embeds.process();
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+      if (tiktokScript.parentNode) document.body.removeChild(tiktokScript);
+      if (instagramScript.parentNode) document.body.removeChild(instagramScript);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col overflow-hidden bg-white">
       <SEO 
-        title="京都の催事会社 | 携帯イベント・ソフトバンク販促支援" 
-        description="株式会社TENは、京都府八幡市を拠点にソフトバンク等の携帯イベント、催事営業、セールスプロモーションを展開する催事会社です。圧倒的な獲得力で貴社のビジネスを支援します。"
+        title="関西の催事会社 | 携帯イベント・ソフトバンク販促支援" 
+        description="株式会社TENは、関西を拠点にソフトバンク等の携帯イベント運営、催事プロモーション、飲食事業を展開する企業です。圧倒的な獲得力で「点」を価値へと繋ぎます。"
       />
       
-      {/* Hero Section */}
-      <section className="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden bg-[#001122]">
+      {/* 1. Hero Section */}
+      <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden bg-[#001122]">
         <div className="absolute inset-0 z-0 opacity-40">
           <img 
             src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600" 
-            alt="京都の催事会社 株式会社TEN オフィスイメージ" 
+            alt="関西の催事会社 株式会社TEN" 
             className="w-full h-full object-cover grayscale"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#001122] via-[#001122]/80 to-transparent z-1"></div>
 
-        <div className="container mx-auto px-8 relative z-10 flex flex-col lg:flex-row items-center">
+        <div className="container mx-auto px-8 relative z-10">
           <div className="lg:w-2/3 reveal-up">
             <div className="mb-6 flex items-center space-x-4">
               <span className="w-12 h-px bg-blue-500"></span>
-              <span className="text-blue-400 font-black text-[11px] tracking-[0.5em] uppercase">Kyoto Event Promotion Group</span>
+              <span className="text-blue-400 font-black text-[11px] tracking-[0.5em] uppercase">Professional Kansai Group</span>
             </div>
-            <h1 className="text-5xl lg:text-[5.5rem] font-serif-jp font-black text-white leading-[1.1] mb-12 tracking-tighter">
-              京都の<span className="text-blue-500">催事会社</span>として、<br />
-              <span className="text-slate-200">携帯イベント</span>を革新する。
+            <h1 className="text-5xl lg:text-[6rem] font-serif-jp font-black text-white leading-[1.1] mb-12 tracking-tighter">
+              <span className="text-blue-500">点</span>を結び、<br />
+              価値を<span className="text-slate-200">最大化</span>する。
             </h1>
             <p className="text-slate-400 text-lg lg:text-xl leading-relaxed max-w-2xl mb-12 font-medium">
-              株式会社TENは、ソフトバンク等の携帯販売プロモーションに特化した、京都のプロフェッショナル催事会社です。戦略的な催事運営で、確かな「価値」を創出します。
+              関西全域を舞台に、携帯イベントと飲食事業を展開する株式会社TEN. 圧倒的な現場力とホスピタリティで, 確かな成果を創出します。
             </p>
             <div className="flex flex-wrap gap-6">
               <Link
-                to="/contact"
+                to="/services"
                 className="px-12 py-6 bg-[#004098] text-white font-black text-xs tracking-[0.3em] uppercase hover:bg-white hover:text-[#004098] transition-all shadow-2xl flex items-center"
               >
-                無料相談・見積り <ArrowUpRight className="ml-3 w-5 h-5" />
+                VIEW SERVICES <ArrowUpRight className="ml-3 w-5 h-5" />
               </Link>
-              <Link
-                to="/services/event"
-                className="px-12 py-6 border border-white/30 text-white font-black text-xs tracking-[0.3em] uppercase hover:bg-white/10 transition-all flex items-center"
-              >
-                携帯イベント詳細 <ChevronRight className="ml-3 w-5 h-5" />
-              </Link>
-            </div>
-          </div>
-          
-          <div className="hidden lg:flex lg:w-1/3 justify-end items-center relative">
-            <div className="vertical-text text-white/10 text-[8rem] font-black tracking-widest select-none leading-none">
-              京都・催事
             </div>
           </div>
         </div>
       </section>
 
-      {/* Philosophy Section */}
-      <section className="py-32 bg-slate-50 relative overflow-hidden" aria-labelledby="philosophy-title">
+      {/* 2. Philosophy Section */}
+      <section id="philosophy" className="py-32 bg-slate-50 relative overflow-hidden">
         <div className="container mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <div className="lg:col-span-4 lg:sticky top-40">
-              <h2 id="philosophy-title" className="text-xs font-black tracking-[0.5em] text-blue-600 uppercase mb-8 border-l-4 border-blue-600 pl-6">Professional Services</h2>
+            <div className="lg:col-span-5">
+              <h2 className="text-xs font-black tracking-[0.5em] text-blue-600 uppercase mb-8 border-l-4 border-blue-600 pl-6">Philosophy</h2>
               <h3 className="text-4xl lg:text-5xl font-serif-jp font-black text-[#002244] leading-tight mb-8">
-                ソフトバンク等の<br />携帯販売を<br />加速させる。
+                出会いという「点」を<br />確かな「価値」へ.
               </h3>
-              <p className="text-slate-500 text-sm font-bold mb-8">京都催事会社 株式会社TEN</p>
-              <Link to="/company" className="inline-flex items-center text-xs font-black tracking-[0.2em] uppercase text-slate-400 hover:text-blue-600 transition-colors">
-                会社概要を見る <ChevronRight className="ml-2 w-4 h-4" />
+              <p className="text-slate-600 text-lg leading-relaxed mb-10 font-medium">
+                株式会社TENの「TEN」は、一つひとつの出会い, すなわち「点」を意味します。私たちはその接点をただ通過させるのではなく、深く丁寧に結びつけることで、より大きな成果（輪）へと昇華させていくことを経営の根幹としています。
+              </p>
+              <Link to="/company" className="inline-flex items-center text-xs font-black tracking-[0.2em] uppercase text-[#004098] hover:translate-x-2 transition-transform">
+                会社情報を見る <ArrowRight className="ml-3 w-4 h-4" />
               </Link>
             </div>
-            <div className="lg:col-span-8 space-y-12">
-              <p className="text-2xl lg:text-3xl font-serif-jp font-black text-slate-700 leading-relaxed">
-                株式会社TENは、携帯イベント運営のスペシャリスト集団です。
-              </p>
-              <div className="text-lg text-slate-500 leading-relaxed font-medium">
-                京都府八幡市を拠点に、関西全域でソフトバンク等のキャリア販促を支援。ショッピングモールや路面店での携帯イベントにおいて、お客様との接点（点）を確かな契約（輪）へと繋げる催事会社として、多くの信頼をいただいております。
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-10">
-                <article className="p-10 bg-white shadow-sm border border-slate-100 flex flex-col justify-between group hover:border-blue-600 transition-colors duration-500">
-                  <BarChart3 className="w-12 h-12 text-blue-600 mb-8" aria-hidden="true" />
-                  <div>
-                    <h4 className="text-xl font-bold mb-4">圧倒的な獲得力</h4>
-                    <p className="text-sm text-slate-500 leading-relaxed">ソフトバンク等の携帯イベントで培った、独自の獲得メソッドと高練度スタッフによる圧倒的な成果を提供します。</p>
-                  </div>
-                </article>
-                <article className="p-10 bg-white shadow-sm border border-slate-100 flex flex-col justify-between group hover:border-blue-600 transition-colors duration-500">
-                  <Users className="w-12 h-12 text-blue-600 mb-8" aria-hidden="true" />
-                  <div>
-                    <h4 className="text-xl font-bold mb-4">京都密着の安心運営</h4>
-                    <p className="text-sm text-slate-500 leading-relaxed">地元の商圏を熟知した京都の催事会社だからこそ可能な、地域性に合わせた最適なイベント設計を行います。</p>
-                  </div>
-                </article>
+            <div className="lg:col-span-7 relative">
+              <div className="aspect-video bg-slate-200 rounded-sm overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Philosophy Visual" 
+                  className="w-full h-full object-cover grayscale"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main Service - Event Business */}
-      <section className="py-32 bg-white" aria-labelledby="service-event-title">
+      {/* 3. Service Section */}
+      <section id="services" className="py-32 bg-white">
         <div className="container mx-auto px-8">
-          <div className="flex flex-col lg:flex-row items-stretch gap-0 border border-slate-100 shadow-2xl overflow-hidden">
-            <div className="lg:w-1/2 relative min-h-[400px]">
+          <div className="text-center mb-24">
+            <h2 className="text-xs font-black tracking-[0.5em] text-blue-600 uppercase mb-4">Our Services</h2>
+            <h3 className="text-4xl lg:text-5xl font-serif-jp font-black text-slate-900">事業展開</h3>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="group relative overflow-hidden bg-slate-900 aspect-[4/3] rounded-sm">
+              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" alt="催事営業" />
+              <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                <span className="text-blue-500 font-black text-[10px] tracking-widest uppercase mb-4">Event Promotion</span>
+                <h4 className="text-white text-3xl font-black mb-6">携帯イベント・販促支援</h4>
+                <p className="text-slate-300 mb-8 max-w-sm font-medium">ソフトバンク等の大手キャリア販促に特化。関西全域で圧倒的な獲得力を発揮します。</p>
+                <Link to="/services/event" className="inline-flex items-center text-xs font-black tracking-[0.2em] uppercase text-white border-b-2 border-blue-500 pb-1 w-fit">
+                  DETAIL <ChevronRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+            {/* 飲食事業エリア - 背景画像を /restaurant-exterior.jpg に設定 */}
+            <div className="group relative overflow-hidden bg-slate-900 aspect-[4/3] rounded-sm">
               <img 
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=1000" 
-                alt="ソフトバンク等の携帯イベント運営風景 | 京都の催事会社TEN" 
-                className="w-full h-full object-cover"
+                src="/restaurant-exterior.jpg" 
+                className="w-full h-full object-cover grayscale opacity-40 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-700" 
+                alt="飲食事業 水炊き 天 外観" 
               />
-              <div className="absolute inset-0 bg-[#004098]/30 mix-blend-multiply"></div>
-              <div className="absolute inset-0 p-12 flex flex-col justify-end text-white">
-                <span className="text-[10px] font-black tracking-[0.5em] uppercase mb-4 opacity-80">Core Competence</span>
-                <h3 id="service-event-title" className="text-4xl font-serif-jp font-black leading-tight mb-0">携帯イベント・催事プロモーション</h3>
+              <div className="absolute inset-0 p-12 flex flex-col justify-end">
+                <span className="text-blue-500 font-black text-[10px] tracking-widest uppercase mb-4">Food Service</span>
+                <h4 className="text-white text-3xl font-black mb-6">飲食事業（水炊き 天）</h4>
+                <p className="text-slate-300 mb-8 max-w-sm font-medium">京都の伝統と至福のおもてなし。厳選された素材で心に残る食体験を提供します。</p>
+                <Link to="/services/restaurant" className="inline-flex items-center text-xs font-black tracking-[0.2em] uppercase text-white border-b-2 border-blue-500 pb-1 w-fit">
+                  DETAIL <ChevronRight className="ml-2 w-4 h-4" />
+                </Link>
               </div>
             </div>
-            <div className="lg:w-1/2 bg-white p-12 lg:p-20 flex flex-col justify-center">
-              <h4 className="text-2xl font-black text-slate-900 mb-8 leading-tight">
-                ソフトバンク販促に特化した、<br />京都No.1の催事会社を目指して。
-              </h4>
-              <p className="text-slate-600 leading-relaxed mb-12 font-medium">
-                株式会社TENは、携帯電話の販売促進、キャンペーン運営のプロ集団です。京都エリアを中心に、ソフトバンク様等の大手キャリア様の現場で、新規獲得から顧客満足度向上までをトータルにサポートする催事会社です。
-              </p>
-              <ul className="space-y-6 mb-12">
-                {["携帯イベントの企画・設営・運営", "ソフトバンク等キャリア特化型の販促支援", "京都の主要商業施設での催事実績"].map((txt, i) => (
-                  <li key={i} className="flex items-center text-sm font-bold text-slate-800">
-                    <ChevronRight className="w-4 h-4 text-blue-600 mr-3" aria-hidden="true" /> {txt}
-                  </li>
-                ))}
-              </ul>
-              <Link to="/services/event" className="inline-flex items-center px-10 py-5 bg-[#004098] text-white text-xs font-black tracking-[0.2em] uppercase rounded-sm hover:shadow-xl transition-all w-fit">
-                携帯イベント詳細はこちら
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Corporate Summary Numbers */}
-      <section className="py-32 bg-[#001122] text-white overflow-hidden relative">
-        <div className="container mx-auto px-8 relative z-10 text-center">
-            <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-16">Kyoto Based Event Company</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-24">
-                <div className="reveal-up">
-                <div className="text-blue-500 font-serif-jp text-6xl lg:text-8xl font-black mb-4">京都<span className="text-2xl ml-2">八幡</span></div>
-                <p className="text-slate-500 text-xs font-black tracking-[0.3em] uppercase">Head Office Location</p>
-                </div>
-                <div className="reveal-up" style={{ animationDelay: '0.2s' }}>
-                <div className="text-blue-500 font-serif-jp text-6xl lg:text-8xl font-black mb-4">携帯<span className="text-2xl ml-2">専門</span></div>
-                <p className="text-slate-500 text-xs font-black tracking-[0.3em] uppercase">Sales Specialization</p>
-                </div>
-                <div className="reveal-up" style={{ animationDelay: '0.4s' }}>
-                <div className="text-blue-500 font-serif-jp text-6xl lg:text-8xl font-black mb-4">Soft<span className="text-2xl ml-2">Bank</span></div>
-                <p className="text-slate-500 text-xs font-black tracking-[0.3em] uppercase">Partner Success</p>
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* News / Topics Preview */}
-      <section className="py-32 bg-white" aria-labelledby="news-title">
+      {/* 6. SNS Section */}
+      <section id="sns" className="py-32 bg-slate-50 overflow-hidden">
         <div className="container mx-auto px-8">
-          <div className="flex justify-between items-end mb-16 border-b border-slate-100 pb-10">
-            <div>
-              <h2 className="text-xs font-black tracking-[0.5em] text-blue-600 uppercase mb-4 border-l-4 border-blue-600 pl-6">Latest Info</h2>
-              <h3 id="news-title" className="text-4xl font-serif-jp font-black text-slate-900">お知らせ・催事実績</h3>
-            </div>
-            <Link to="/works" className="text-xs font-black tracking-widest uppercase text-slate-400 hover:text-blue-600 transition-colors">すべての実績を見る</Link>
+          <div className="text-center mb-16">
+            <h2 className="text-xs font-black tracking-[0.5em] text-blue-600 uppercase mb-4">Social Media</h2>
+            <h3 className="text-4xl lg:text-5xl font-serif-jp font-black text-slate-900">公式SNS</h3>
+            <p className="text-slate-500 mt-4 text-sm font-medium">水炊き 天 の最新情報をチェック</p>
           </div>
-          <div className="divide-y divide-slate-100">
-            {[
-              { date: "2024.11.20", category: "Corporate", title: "京都の催事会社 株式会社TEN 公式ウェブサイトをリニューアルしました。" },
-              { date: "2024.10.05", category: "Event", title: "ソフトバンク携帯イベント：京都・大阪エリアでの大型キャンペーン運営を担当。" },
-              { date: "2024.08.12", category: "Recruit", title: "携帯イベント運営スタッフ募集中。京都近郊で働きたい方歓迎。" }
-            ].map((news, i) => (
-              <Link key={i} to="/works" className="flex flex-col md:flex-row items-start md:items-center py-8 group transition-all">
-                <span className="text-sm font-bold text-slate-400 mb-2 md:mb-0 md:w-40">{news.date}</span>
-                <span className="px-3 py-1 bg-slate-100 text-[10px] font-black tracking-widest uppercase text-slate-500 rounded-sm mb-3 md:mb-0 md:mr-8 group-hover:bg-blue-600 group-hover:text-white transition-all">{news.category}</span>
-                <h4 className="text-lg font-bold text-slate-700 group-hover:text-blue-600 transition-colors">{news.title}</h4>
-                <ChevronRight className="ml-auto text-slate-200 group-hover:text-blue-600 transition-colors" aria-hidden="true" />
-              </Link>
-            ))}
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            <div className="flex flex-col items-center w-full">
+              <div className="w-full bg-white p-4 rounded-sm shadow-sm flex flex-col items-center">
+                <div className="flex items-center space-x-3 mb-6 px-2 w-full max-w-[540px]">
+                  <TikTokIcon className="w-5 h-5 text-slate-900" />
+                  <span className="font-black text-[10px] tracking-widest uppercase">TikTok Official</span>
+                </div>
+                <div className="w-full flex justify-center">
+                  <blockquote 
+                    className="tiktok-embed" 
+                    cite="https://www.tiktok.com/@10.mizutaki" 
+                    data-unique-id="10.mizutaki" 
+                    data-embed-type="creator" 
+                    style={{ maxWidth: '540px', minWidth: '288px', width: '100%' }}
+                  > 
+                    <section> 
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@10.mizutaki?refer=creator_embed">@10.mizutaki</a> 
+                    </section> 
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col w-full">
+              <div className="w-full bg-white p-4 rounded-sm shadow-sm overflow-hidden flex flex-col items-center">
+                <div className="flex items-center space-x-3 mb-6 px-2 w-full max-w-[540px]">
+                  <Instagram className="w-5 h-5 text-pink-600" />
+                  <span className="font-black text-[10px] tracking-widest uppercase">Instagram Highlights</span>
+                </div>
+                
+                <div className="flex overflow-x-auto gap-4 pb-4 snap-x scrollbar-hide w-full max-w-[540px]" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+                  <div className="snap-start shrink-0 w-[326px]">
+                    <blockquote className="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C_kuDHqyKeu/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style={{ background: '#FFF', border: 0, borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '326px', minWidth: '326px', padding: 0, width: '99.375%' }}>
+                      <div style={{ padding: '16px' }}>
+                        <a href="https://www.instagram.com/p/C_kuDHqyKeu/?utm_source=ig_embed&amp;utm_campaign=loading" style={{ background: '#FFFFFF', lineHeight: 0, padding: '0 0', textAlign: 'center', textDecoration: 'none', width: '100%' }} target="_blank" rel="noopener noreferrer">
+                          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '40px', marginRight: '14px', width: '40px' }}></div>
+                            <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', height: '14px', marginBottom: '6px', width: '100px' }}></div>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', height: '14px', width: '60px' }}></div>
+                            </div>
+                          </div>
+                          <div style={{ padding: '19% 0' }}></div>
+                          <div style={{ display: 'block', height: '50px', margin: '0 auto 12px', width: '50px' }}>
+                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink"><g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg>
+                          </div>
+                          <div style={{ paddingTop: '8px' }}>
+                            <div style={{ color: '#3897f0', fontFamily: 'Arial,sans-serif', fontSize: '14px', fontStyle: 'normal', fontWeight: 550, lineHeight: '18px' }}>この投稿をInstagramで見る</div>
+                          </div>
+                          <div style={{ padding: '12.5% 0' }}></div>
+                          <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '14px', alignItems: 'center' }}>
+                            <div>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '12.5px', width: '12.5px', transform: 'translateX(0px) translateY(7px)' }}></div>
+                              <div style={{ backgroundColor: '#F4F4F4', height: '12.5px', transform: 'rotate(-45deg) translateX(3px) translateY(1px)', width: '12.5px', flexGrow: 0, marginRight: '14px', marginLeft: '2px' }}></div>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '12.5px', width: '12.5px', transform: 'translateX(9px) translateY(-18px)' }}></div>
+                            </div>
+                            <div style={{ marginLeft: '8px' }}>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '20px', width: '20px' }}></div>
+                              <div style={{ width: 0, height: 0, borderTop: '2px solid transparent', borderLeft: '6px solid #f4f4f4', borderBottom: '2px solid transparent', transform: 'translateX(16px) translateY(-4px) rotate(30deg)' }}></div>
+                            </div>
+                          </div>
+                        </a>
+                        <p style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', lineHeight: '17px', marginBottom: 0, marginTop: '8px', overflow: 'hidden', padding: '8px 0 7px', textAlign: 'center', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          <a href="https://www.instagram.com/p/C_kuDHqyKeu/?utm_source=ig_embed&amp;utm_campaign=loading" style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '17px', textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">水炊き 天(@ten.mizutaki)がシェアした投稿</a>
+                        </p>
+                      </div>
+                    </blockquote>
+                  </div>
+
+                  <div className="snap-start shrink-0 w-[326px]">
+                    <blockquote className="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DBQjjlrSCHf/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style={{ background: '#FFF', border: 0, borderRadius: '3px', boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)', margin: '1px', maxWidth: '326px', minWidth: '326px', padding: 0, width: '99.375%' }}>
+                      <div style={{ padding: '16px' }}>
+                        <a href="https://www.instagram.com/p/DBQjjlrSCHf/?utm_source=ig_embed&amp;utm_campaign=loading" style={{ background: '#FFFFFF', lineHeight: 0, padding: '0 0', textAlign: 'center', textDecoration: 'none', width: '100%' }} target="_blank" rel="noopener noreferrer">
+                          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '40px', marginRight: '14px', width: '40px' }}></div>
+                            <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, justifyContent: 'center' }}>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', height: '14px', marginBottom: '6px', width: '100px' }}></div>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '4px', height: '14px', width: '60px' }}></div>
+                            </div>
+                          </div>
+                          <div style={{ padding: '19% 0' }}></div>
+                          <div style={{ display: 'block', height: '50px', margin: '0 auto 12px', width: '50px' }}>
+                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlnsXlink="https://www.w3.org/1999/xlink"><g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg>
+                          </div>
+                          <div style={{ paddingTop: '8px' }}>
+                            <div style={{ color: '#3897f0', fontFamily: 'Arial,sans-serif', fontSize: '14px', fontStyle: 'normal', fontWeight: 550, lineHeight: '18px' }}>この投稿をInstagramで見る</div>
+                          </div>
+                          <div style={{ padding: '12.5% 0' }}></div>
+                          <div style={{ display: 'flex', flexDirection: 'row', marginBottom: '14px', alignItems: 'center' }}>
+                            <div>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '12.5px', width: '12.5px', transform: 'translateX(0px) translateY(7px)' }}></div>
+                              <div style={{ backgroundColor: '#F4F4F4', height: '12.5px', transform: 'rotate(-45deg) translateX(3px) translateY(1px)', width: '12.5px', flexGrow: 0, marginRight: '14px', marginLeft: '2px' }}></div>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '12.5px', width: '12.5px', transform: 'translateX(9px) translateY(-18px)' }}></div>
+                            </div>
+                            <div style={{ marginLeft: '8px' }}>
+                              <div style={{ backgroundColor: '#F4F4F4', borderRadius: '50%', height: '20px', width: '20px' }}></div>
+                              <div style={{ width: 0, height: 0, borderTop: '2px solid transparent', borderLeft: '6px solid #f4f4f4', borderBottom: '2px solid transparent', transform: 'translateX(16px) translateY(-4px) rotate(30deg)' }}></div>
+                            </div>
+                          </div>
+                        </a>
+                        <p style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', lineHeight: '17px', marginBottom: 0, marginTop: '8px', overflow: 'hidden', padding: '8px 0 7px', textAlign: 'center', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          <a href="https://www.instagram.com/p/DBQjjlrSCHf/?utm_source=ig_embed&amp;utm_campaign=loading" style={{ color: '#c9c8cd', fontFamily: 'Arial,sans-serif', fontSize: '14px', fontStyle: 'normal', fontWeight: 'normal', lineHeight: '17px', textDecoration: 'none' }} target="_blank" rel="noopener noreferrer">水炊き 天(@ten.mizutaki)がシェアした投稿</a>
+                        </p>
+                      </div>
+                    </blockquote>
+                  </div>
+                </div>
+                
+                <div className="mt-4 px-2 w-full max-w-[540px] text-[10px] text-slate-400 font-bold uppercase tracking-widest flex items-center">
+                  <ArrowRight className="w-3 h-3 mr-2 animate-pulse" /> Swipe to see posts
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-40 bg-slate-50 text-center relative overflow-hidden">
+      {/* 7. Contact Section */}
+      <section id="contact" className="py-40 bg-white text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-blue-900/5 select-none z-0 tracking-tighter">
-          KYOTO
+          CONTACT
         </div>
         <div className="container mx-auto px-8 relative z-10">
           <h2 className="text-4xl lg:text-7xl font-serif-jp font-black text-[#002244] mb-12 leading-tight">
-            京都で携帯イベントなら、<br />株式会社TEN。
+            まずはお気軽に<br />ご相談ください。
           </h2>
-          <p className="text-slate-500 text-lg lg:text-xl mb-16 font-medium max-w-2xl mx-auto">
-            ソフトバンク販促支援、催事運営のパートナーをお探しの企業様は、ぜひ京都の催事会社TENへご相談ください。
-          </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link 
               to="/contact" 
-              className="px-20 py-8 bg-[#004098] text-white font-black text-xs tracking-[0.4em] uppercase rounded-sm hover:bg-[#003377] transition-all shadow-2xl flex items-center justify-center"
+              className="px-20 py-8 bg-[#004098] text-white font-black text-xs tracking-[0.4em] uppercase rounded-sm hover:bg-black transition-all shadow-2xl flex items-center justify-center"
             >
-              お問い合わせ・見積り <ArrowUpRight className="ml-3 w-5 h-5" />
+              お問い合わせはこちら <Mail className="ml-3 w-5 h-5" />
             </Link>
+          </div>
+          <div className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-12 text-slate-400">
+            <div className="flex items-center">
+              <Phone className="w-5 h-5 mr-2 text-blue-500" />
+              <span className="font-bold">090-5652-9909</span>
+            </div>
+            <div className="flex items-center">
+              <Clock className="w-5 h-5 mr-2 text-blue-500" />
+              <span className="font-bold">9:00 - 20:00</span>
+            </div>
           </div>
         </div>
       </section>

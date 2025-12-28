@@ -1,13 +1,12 @@
-
 import React from 'react';
-import { HashRouter as Router, Routes, Route, ScrollRestoration } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import Services from './pages/Services';
 import EventService from './pages/EventService';
 import RestaurantService from './pages/RestaurantService';
 import Company from './pages/Company';
 import Contact from './pages/Contact';
-import Works from './pages/Works';
 import Recruitment from './pages/Recruitment';
 
 const App: React.FC = () => {
@@ -16,9 +15,9 @@ const App: React.FC = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/services/event" element={<EventService />} />
           <Route path="/services/restaurant" element={<RestaurantService />} />
-          <Route path="/works" element={<Works />} />
           <Route path="/company" element={<Company />} />
           <Route path="/recruitment" element={<Recruitment />} />
           <Route path="/contact" element={<Contact />} />
